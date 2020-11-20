@@ -1,0 +1,5 @@
+{
+    "name":       "My Blog",
+    "intro":      "Hi",
+    "inline_src": "c|cpp|h|hpp|js|py"
+}

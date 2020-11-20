@@ -1,0 +1,15 @@
+* Blorgify
+  Build personal blog from org-mode files.
+
+** Usage
+   Copy ~./dist/blorgify~ to your blog directory and run it.
+
+** Nicer example
+   [[https://github.com/Naheel-Azawy/voltaat-posts]]
+
+** More details?
+   Will get back to this later, hopefully...
+   Check the templates and examples for now.
+
+** License
+   GPL-3

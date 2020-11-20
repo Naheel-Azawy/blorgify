@@ -1,0 +1,33 @@
+<!-- Created with https://github.com/Naheel-Azawy/blorgify -->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Blog</title>
+        <style>
+          .index_grid {
+              display: grid;
+              grid-template-columns: repeat(2, 1fr);
+              gap: 20px;
+          }
+          .card { cursor: pointer; }
+          .card_img { float: left; }
+          .card_txt { padding-left:  20px; }
+        </style>
+    </head>
+    <body>
+        <h1>My Blog</h1>
+        <p>Hi</p>
+        
+        <div class="content"><div class="index_grid">
+            <div class="card" onclick="location.href='./example1/index.html'">
+            <img src="./example1/./happy.png" class="card_img"><br>
+            <div class="card_txt">Example 1</div></div>
+
+<div class="card" onclick="location.href='./example2/index.html'">
+            <img src="./example2/./sad.png" class="card_img"><br>
+            <div class="card_txt">Example 2</div></div>
+
+        </div></div>
+    </body>
+</html>

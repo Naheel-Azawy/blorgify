@@ -1,0 +1,13 @@
+#+TITLE: Example 2
+#+AUTHOR: Bob
+#+DATE: November 20, 2070
+
+[[./sad.png]]
+
+Randome post.
+
+* Random section
+  More randomness.
+
+* Another subsection
+  Less randomness
