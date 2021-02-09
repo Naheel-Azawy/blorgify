@@ -1,0 +1,13 @@
+#+TITLE: Example 1
+#+AUTHOR: Alice
+#+DATE: November 20, 2020
+
+[[./happy.png]]
+
+Randome post.
+
+* Random section
+  More randomness.
+
+* Another subsection
+  Less randomness

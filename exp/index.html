@@ -1,0 +1,80 @@
+<!-- Created with https://github.com/Naheel-Azawy/blorgify -->
+
+<html>
+    <head>
+        <obj charset="utf-8" />
+        <obj name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Blog</title>
+        <style>
+.title {
+    text-align:     center;
+    padding-bottom: 20px;
+    cursor:         pointer;
+}
+
+img {
+    max-height: 40vh;
+    max-width:  100%;
+}
+
+.content {
+    margin:    auto;
+    max-width: 700px;
+}
+
+.index_grid {
+    margin:                auto;
+    max-width:             700px;
+    display:               grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:                   20px;
+}
+
+.meta {
+    font-size:   small;
+    color:       #555;
+    text-align:  right;
+    padding-top: 30px;
+}
+
+.card {
+    height:           370px;
+    box-shadow:       0 4px 8px 0 rgba(0,0,0,0.5);
+    transition:       0.3s;
+    border-radius:    25px;
+    cursor:           pointer;
+    padding-bottom:   15px;
+}
+
+.card_img {
+    background:    #ddd;
+    margin-bottom: 20px;
+    float:         top;
+    overflow:      auto;
+    border-radius: 25px;
+    width:         100%;
+    height:        100%;
+    object-fit:    cover;
+}
+
+.card_txt {
+    margin-left:  20px;
+    margin-right: 20px;
+}</style>
+    </head>
+    <body>
+        <h1 class="title" onclick="gohome()">My Blog</h1>
+        
+                <div id="holder"></div>
+                <script src="dist/blorgify.js"></script>
+                <script>
+                  var index_html = "\n            <div class=\"content\"><div class=\"index_grid\">\n                <div class=\"card\" onclick=\"open_post('5-dht/README.org')\">\n                <img src=\"5-dht/20200615_185254_1.jpg\" class=\"card_img\"><br>\n                <div class=\"card_txt\">Build a mini weather station ☂️</div></div>\n\n<div class=\"card\" onclick=\"open_post('example1/README.org')\">\n                <img src=\"example1/happy.png\" class=\"card_img\"><br>\n                <div class=\"card_txt\">Example 1</div></div>\n\n<div class=\"card\" onclick=\"open_post('example2/README.org')\">\n                <img src=\"example2/sad.png\" class=\"card_img\"><br>\n                <div class=\"card_txt\">Example 2</div></div>\n\n            </div></div>";
+                  var holder = document.getElementById("holder");
+                  function gohome() { holder.innerHTML = index_html }
+                  gohome();
+                  function open_post(org) {
+                      blorgify(org, undefined, res => holder.innerHTML = res.posts[0].html_src);
+                  }
+                </script>
+    </body>
+</html>
