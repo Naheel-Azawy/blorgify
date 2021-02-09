@@ -1,13 +1,65 @@
 <!-- Created with https://github.com/Naheel-Azawy/blorgify -->
+
 <html>
     <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <obj charset="utf-8" />
+        <obj name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Build a mini weather station ☂️</title>
-        <link rel="icon" href="../icon.png">
-        <link rel="stylesheet" type="text/css" href="../styles.css">
-        <link rel="stylesheet" type="text/css" href="../prism.css">
-        <script src="../prism.js"></script>
+        <style>
+.title {
+    text-align:     center;
+    padding-bottom: 20px;
+}
+
+img {
+    max-height: 40vh;
+    max-width:  100%;
+}
+
+.content {
+    margin:    auto;
+    max-width: 700px;
+}
+
+.index_grid {
+    margin:                auto;
+    max-width:             700px;
+    display:               grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:                   20px;
+}
+
+.meta {
+    font-size:   small;
+    color:       #555;
+    text-align:  right;
+    padding-top: 30px;
+}
+
+.card {
+    height:           370px;
+    box-shadow:       0 4px 8px 0 rgba(0,0,0,0.5);
+    transition:       0.3s;
+    border-radius:    25px;
+    cursor:           pointer;
+    padding-bottom:   15px;
+}
+
+.card_img {
+    background:    #ddd;
+    margin-bottom: 20px;
+    float:         top;
+    overflow:      auto;
+    border-radius: 25px;
+    width:         100%;
+    height:        100%;
+    object-fit:    cover;
+}
+
+.card_txt {
+    margin-left:  20px;
+    margin-right: 20px;
+}</style>
     </head>
     <body>
         
@@ -21,7 +73,7 @@ Wiring is pretty straight forward thanks to the convenient interfaces. The neede
 <li>DHT11 sensor</li>
 <li>16x2 LCD display with the I2C driver</li>
 </ul>
-<p><img src="./dht_bb.png" alt="./dht_bb.png" title="./dht_bb.png"/></p>
+<p><img src="/mnt/hdd1/Public/Projects/blorgify/exp/5-dht/dht_bb.png" alt="/mnt/hdd1/Public/Projects/blorgify/exp/5-dht/dht_bb.png" title="/mnt/hdd1/Public/Projects/blorgify/exp/5-dht/dht_bb.png"/></p>
 <p>Connections from the Arduino to the breadboard:</p>
 <ul><li>Arduino pin GND → Breadboard ground line</li>
 <li>Arduino pin 5V  → Breadboard 5V line</li>
@@ -150,8 +202,8 @@ void loop() {
 </code>
 </pre>
 <h2>Show it</h2>
-<img src="./20200615_185254_1.jpg" alt="./20200615_185254_1.jpg" title="./20200615_185254_1.jpg"/>
-            <div style="font-size:small;text-align:right" class="meta">
+<img src="/mnt/hdd1/Public/Projects/blorgify/exp/5-dht/20200615_185254_1.jpg" alt="/mnt/hdd1/Public/Projects/blorgify/exp/5-dht/20200615_185254_1.jpg" title="/mnt/hdd1/Public/Projects/blorgify/exp/5-dht/20200615_185254_1.jpg"/>
+            <div style="font-size:small;text-align:right" class="obj">
                 Author: Naheel Faisal Kamal <br>
                 Last modified: September 2, 2020
             </div>

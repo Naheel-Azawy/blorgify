@@ -1828,7 +1828,6 @@ function blorgify(orgs, config, ondone) {
 .title {
     text-align:     center;
     padding-bottom: 20px;
-    cursor:         pointer;
 }
 
 img {
@@ -1890,7 +1889,7 @@ img {
         <style>${STYLES}</style>
     </head>
     <body>
-        <h1 class="title" onclick="gohome()">{{title}}</h1>
+        <h1 class="title">{{title}}</h1>
         {{content}}
     </body>
 </html>`;
@@ -1984,7 +1983,7 @@ img {
             let file = good_path(m[1], dirname);
             let ext = file_extension(file);
 
-            if (inline_src.includes(ext) && !config.make_index) {
+            if (inline_src.includes(ext)) {
                 // inline source files
                 let src = await read_file(file, dirname);
                 src = `#+begin_src c\n${src}\n#+end_src\n`;
@@ -2017,17 +2016,17 @@ img {
             cover: cover ? cover : undefined,
             org: file,
             org_src: org,
+            html: file.replace("README.org", "index.html"),
             html_src: undefined
         };
 
-        if (!config.make_index) {
-            // build the html file
-            let parser = new Org.Parser();
-            let org_document = parser.parse(org);
-            let html = org_document.convert(Org.ConverterHTML, {}).toString();
-            html = html_template
-                .replaceAll("{{title}}", obj.title)
-                .replace("{{content}}", `
+        // build the html file
+        let parser = new Org.Parser();
+        let org_document = parser.parse(org);
+        let html = org_document.convert(Org.ConverterHTML, {}).toString();
+        html = html_template
+            .replaceAll("{{title}}", obj.title)
+            .replace("{{content}}", `
         <div class="content">
             ${html}
             <div style="font-size:small;text-align:right" class="obj">
@@ -2035,9 +2034,8 @@ img {
                 Last modified: ${obj.modified}
             </div>
         </div>`);
-            html = `<!-- Created with ${BLORGIFY_GIT} -->\n${html}`;
-            obj.html_src = html;
-        }
+        html = `<!-- Created with ${BLORGIFY_GIT} -->\n${html}`;
+        obj.html_src = html;
 
         return obj;
     }
@@ -2053,7 +2051,6 @@ img {
             inline_src:     "c|cpp|h|hpp|js|py|ino",
             blog_template:  TEMPLATE_BLOG,
             index_template: TEMPLATE_INDEX,
-            make_index:     false,
             base_dir:       ""
         };
         if (!config.blog_template) {
@@ -2082,38 +2079,22 @@ img {
             }
             ret.posts.push(obj);
 
-            if (config.make_index) {
-                let cover = obj.cover ? `src="${obj.cover}"` : "";
-                cards.push(`<div class="card" onclick="open_post('${obj.org}')">
+            let cover = obj.cover ? `src="${obj.cover}"` : "";
+            cards.push(`<div class="card" onclick="location.href='${obj.html}'">
                 <img ${cover} class="card_img"><br>
                 <div class="card_txt">${obj.title}</div></div>\n`);
-            }
         }
 
-        if (config.make_index) {
-            let content = `
+        let content = `
             <div class="content"><div class="index_grid">
                 ${cards.join("\n")}
             </div></div>`;
-            content = `
-                <div id="holder"></div>
-                <script src="dist/blorgify.js"></script>
-                <script>
-                  var index_html = ${JSON.stringify(content)};
-                  var holder = document.getElementById("holder");
-                  function gohome() { holder.innerHTML = index_html }
-                  gohome();
-                  function open_post(org) {
-                      blorgify(org, undefined, res => holder.innerHTML = res.posts[0].html_src);
-                  }
-                </script>`;
 
-            let html = config.index_template
-                .replaceAll("{{title}}", config.name)
-                .replace("{{content}}", content);
-            html = `<!-- Created with ${BLORGIFY_GIT} -->\n${html}`;
-            ret.index = html;
-        }
+        let html = config.index_template
+            .replaceAll("{{title}}", config.name)
+            .replace("{{content}}", content);
+        html = `<!-- Created with ${BLORGIFY_GIT} -->\n${html}`;
+        ret.index = html;
 
         return ret;
     }
@@ -2130,8 +2111,10 @@ if (typeof process != "undefined") {
     for (let i in orgs) {
         orgs[i] = `${base_dir}/${orgs[i]}`.replace("/./", "/");
     }
-    blorgify(orgs, {
-        make_index: true,
-        base_dir: base_dir
-    }, res => fs.writeFileSync("index.html", res.index));
+    blorgify(orgs, {}, res => {
+        fs.writeFileSync("index.html", res.index);
+        for (let post of res.posts) {
+            fs.writeFileSync(post.html, post.html_src);
+        }
+    });
 }
