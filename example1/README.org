@@ -11,3 +11,4 @@ Randome post.
 
 * Another subsection
   Less randomness
+  [[./hello.c]]

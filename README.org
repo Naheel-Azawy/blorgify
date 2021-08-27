@@ -2,7 +2,15 @@
   Build personal blog from org-mode files.
 
 ** Usage
-   Copy ~./dist/blorgify~ to your blog directory and run it.
+   #+begin_src shell
+     blorgify [PATTERN.org]
+   #+end_src
+   This generates ~index.html~ for each ~PATTERN.org~.
+
+   *Example:*
+   #+begin_src shell
+     blorgify './*/README.org'
+   #+end_src
 
 ** Nicer example
    [[https://github.com/Naheel-Azawy/voltaat-posts]]

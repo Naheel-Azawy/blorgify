@@ -1,0 +1,37 @@
+{
+    "name": "blorgify",
+    "version": "1.0.0",
+    "description": "",
+    "main": "blorgify.js",
+    "scripts": {
+        "build": "webpack",
+        "build:prod": "webpack --env production",
+        "watch": "webpack -w",
+        "test": "mocha dist/test.bundle.js",
+        "start": "http-server -p 9090 dist"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Naheel-Azawy/blorgify.git"
+    },
+    "keywords": [
+        "emacs",
+        "org-mode",
+        "blog"
+    ],
+    "author": "Naheel-Azawy",
+    "license": "GPL-3.0",
+    "bugs": {
+        "url": "https://github.com/Naheel-Azawy/blorgify/issues"
+    },
+    "homepage": "https://github.com/Naheel-Azawy/blorgify#readme",
+    "devDependencies": {
+        "org": "*",
+        "webpack": "*",
+        "webpack-bundle-analyzer": "*",
+        "webpack-cli": "*"
+    },
+    "dependencies": {
+        "prismjs": "^1.24.1"
+    }
+}

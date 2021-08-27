@@ -1,0 +1,32 @@
+body {
+    background: black;
+    color: white;
+}
+
+.meta {
+    font-size: small;
+    text-align: right;
+}
+
+.section-number {
+    display: none;
+}
+
+.index_grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.card {
+    cursor: pointer;
+    background: #ffffff33;
+}
+
+.card_img {
+    float: left;
+}
+
+.card_txt {
+    padding-left: 20px;
+}
